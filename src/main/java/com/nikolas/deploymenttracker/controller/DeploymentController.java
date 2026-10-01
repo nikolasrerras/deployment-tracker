@@ -14,7 +14,7 @@ import com.nikolas.deploymenttracker.model.Deployment;
 import com.nikolas.deploymenttracker.service.DeploymentService;
 
 import java.util.List;
-
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
@@ -27,11 +27,10 @@ public class DeploymentController {
         this.deploymentService = deploymentService;
     }
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public DeploymentResponse createDeployment(
-            @RequestBody CreateDeploymentRequest request) {
-
+   @PostMapping
+@ResponseStatus(HttpStatus.CREATED)
+public DeploymentResponse createDeployment(
+        @Valid @RequestBody CreateDeploymentRequest request) {
         Deployment deployment = deploymentService.createDeployment(
                 request.applicationId(),
                 request.environment(),

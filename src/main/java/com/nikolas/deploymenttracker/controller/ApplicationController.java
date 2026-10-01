@@ -19,6 +19,7 @@ import com.nikolas.deploymenttracker.model.Application;
 import com.nikolas.deploymenttracker.service.ApplicationService;
 import com.nikolas.deploymenttracker.service.DeploymentService;
 import com.nikolas.deploymenttracker.model.DeploymentEnvironment;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/applications")
@@ -36,9 +37,9 @@ public class ApplicationController {
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public ApplicationResponse createApplication(
-            @RequestBody CreateApplicationRequest request) {
+@ResponseStatus(HttpStatus.CREATED)
+public ApplicationResponse createApplication(
+        @Valid @RequestBody CreateApplicationRequest request) {
 
         Application application =
                 applicationService.createApplication(request.name());

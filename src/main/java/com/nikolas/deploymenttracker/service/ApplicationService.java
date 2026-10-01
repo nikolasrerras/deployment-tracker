@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.nikolas.deploymenttracker.model.Application;
 import com.nikolas.deploymenttracker.repository.ApplicationRepository;
+import com.nikolas.deploymenttracker.exception.DuplicateApplicationException;
 
 @Service
 public class ApplicationService {
@@ -31,9 +32,7 @@ public class ApplicationService {
         String normalizedName = name.trim();
 
         if (applicationRepository.existsByName(normalizedName)) {
-            throw new IllegalArgumentException(
-                    "Application already exists: " + normalizedName
-            );
+            throw new DuplicateApplicationException(normalizedName);
         }
 
         Application application = new Application(normalizedName);
