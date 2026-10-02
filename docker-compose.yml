@@ -30,7 +30,7 @@ services:
       context: .
       dockerfile: Dockerfile
 
-    image: deployment-tracker:local
+    image: deployment-tracker:${IMAGE_TAG:-local}
     container_name: deployment-tracker-api
 
     ports:
