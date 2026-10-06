@@ -1,4 +1,3 @@
-
 services:
   postgres:
     image: postgres:17
@@ -24,6 +23,8 @@ services:
       interval: 5s
       timeout: 3s
       retries: 10
+
+    restart: unless-stopped
 
   api:
     build:

@@ -1,4 +1,3 @@
-
 pipeline {
     agent any
 
@@ -58,7 +57,6 @@ pipeline {
                         --project-name deployment-tracker \
                         --env-file "$ENV_FILE" \
                         up -d \
-                        --no-deps \
                         --no-build \
                         --pull never \
                         api
