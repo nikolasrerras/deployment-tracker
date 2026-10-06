@@ -50,7 +50,7 @@ pipeline {
                 sh '''
                     set -eu
 
-                    ENV_FILE="/home/nikolas/Projects/deployment-tracker/.env"
+                    ENV_FILE="$HOME/Projects/deployment-tracker/.env"
 
                     test -f "$ENV_FILE"
 
